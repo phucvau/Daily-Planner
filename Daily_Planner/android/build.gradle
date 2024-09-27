@@ -1,0 +1,23 @@
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies{
+//        implementation 'com.google.android.gms:play-services-auth:20.2.0' // Thay thế bằng phiên bản mới nhất
+//        implementation 'com.google.android.gms:play-services-firestore:24.0.0' // Thay thế bằng phiên bản mới nhất    }
+}
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
